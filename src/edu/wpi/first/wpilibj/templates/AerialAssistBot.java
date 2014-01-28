@@ -32,7 +32,7 @@ public class AerialAssistBot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new DriveWithJoysticks();
+        autonomousCommand = new AutonomousMoveForward();
 
         // Initialize all subsystems
         CommandBase.init();
