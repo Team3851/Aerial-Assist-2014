@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveStraightXSeconds
  * @author 3851
  */
 public class AutonomousMoveForward extends CommandGroup {
+    //robot moves back, then goes straight
     public AutonomousMoveForward() {
         addSequential(new DriveBackXSeconds(0.75));
         addSequential(new WaitCommand(1.0));
