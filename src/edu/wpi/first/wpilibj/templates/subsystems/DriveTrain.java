@@ -14,13 +14,17 @@ import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveWithJoysticks;
  * @author 3851
  */
 public class DriveTrain extends Subsystem { 
-    RobotDrive tank_Drive;
+    RobotDrive tank_Drive1;
+    RobotDrive tank_Drive2;
     //AnalogChannel driveGyro;
 
     // Initialize your subsystem here
     public DriveTrain() {
-        tank_Drive = new RobotDrive(RobotMap.leftMotor, RobotMap.rightMotor);
-        tank_Drive.setSafetyEnabled(true);
+        //tank_Drive1 = new RobotDrive(4, 1);
+        tank_Drive2 = new RobotDrive(RobotMap.leftFrontMotor, RobotMap.leftRearMotor,
+                RobotMap.rightFrontMotor, RobotMap.rightRearMotor);
+        //tank_Drive1.setSafetyEnabled(true);
+        tank_Drive2.setSafetyEnabled(true);
     }
     
     
@@ -33,7 +37,8 @@ public class DriveTrain extends Subsystem {
 
     //standard tank drive 
     public void basicDrive(double x, double y) {
-        tank_Drive.tankDrive(x, y);
+        //tank_Drive1.tankDrive(x, y);
+        tank_Drive2.tankDrive(x, y);
     }
 }
 

@@ -46,7 +46,7 @@ public class IO {
     Joystick rightJoy = new Joystick(2);
     
     public double getLeftY() {
-        return leftJoy.getY();
+        return (-1)*leftJoy.getY();
     }
     public double getLeftX() {
         return leftJoy.getX();

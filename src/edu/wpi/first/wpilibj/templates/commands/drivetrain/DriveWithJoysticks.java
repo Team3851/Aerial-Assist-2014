@@ -34,7 +34,7 @@ public class DriveWithJoysticks extends CommandBase {
         //magnitude uses circle formula to get value between 1.0<->-1.0
         //left direction gets values from 0 degrees to 180degrees, -180degrees to 0 degrees clockwise
         //right speed is joystick axis value between 1.0<->-1.0
-        drivetrain.basicDrive(io.getLeftY(), io.getRightY());
+        drivetrain.basicDrive(io.getLeftY(), (-1)*io.getRightY());
         System.out.println("Joystick LEFT :"+io.getLeftY()+"  Joystick RIGHT :"+io.getRightY());
         //DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser5, 1, "Magnitude"+io.getLeftMagnitude());
         //DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser4, 1, "Direction"+io.getLeftDirection());
