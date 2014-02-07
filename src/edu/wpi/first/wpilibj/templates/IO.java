@@ -46,14 +46,24 @@ public class IO {
     Joystick rightJoy = new Joystick(2);
     
     public double getLeftY() {
-        return (-1)*leftJoy.getY();
+        //set threshold value to 0.09
+        if (Math.abs(leftJoy.getY()) <= 0.09) {
+            return 0;
+        }
+        else {
+            return (-1)*leftJoy.getY();
+        }
     }
     public double getLeftX() {
         return leftJoy.getX();
     }
     
     public double getRightY() {
-        return rightJoy.getY();
+        //set threshold value to 0.09
+        if (Math.abs(rightJoy.getY()) <= 0.09) {
+            return 0;
+        }
+        return (-1)*rightJoy.getY();
     }
     
     public double getRightX() {
