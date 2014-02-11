@@ -69,8 +69,8 @@ public class IO {
             buttonP3 = new JoystickButton(pickupJoy, 3),
             buttonP1 = new JoystickButton(pickupJoy, 1),
             
-            buttonP6 = new JoystickButton(pickupJoy, 2),
-            buttonP5 = new JoystickButton(pickupJoy, 2);
+            buttonP6 = new JoystickButton(pickupJoy, 6),
+            buttonP5 = new JoystickButton(pickupJoy, 5);
     public IO() {
         buttonP2.whileHeld(new EnablePickupPosition(1.0));
         buttonP3.whenPressed(new EnableShootingPosition(1.0));
