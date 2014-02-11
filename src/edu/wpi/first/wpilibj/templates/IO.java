@@ -70,16 +70,19 @@ public class IO {
             buttonP1 = new JoystickButton(pickupJoy, 1),
             
             buttonP6 = new JoystickButton(pickupJoy, 6),
-            buttonP5 = new JoystickButton(pickupJoy, 5);
+            buttonP4 = new JoystickButton(pickupJoy, 4);
     public IO() {
         buttonP2.whileHeld(new EnablePickupPosition(1.0));
         buttonP3.whenPressed(new EnableShootingPosition(1.0));
         buttonP1.whenPressed(new PinRelease(1.0));
         
+        
+        buttonP4.whenPressed(new PrepareShot());
         buttonP6.whileHeld(new GrabBall());
         
         buttonL11.whenPressed(new EnableInitPosition(4.0));
         buttonL10.whenPressed(new DisableInitPosition(4.0));
+        buttonL6.whenPressed(new Release(2.0));
     }
     
     public boolean getButtonL2() {
