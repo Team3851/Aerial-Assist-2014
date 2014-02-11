@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj.templates.commands.ballista.DisableInitPosition;
 import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveBackXSeconds;
 import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveStraightXSeconds;
 
@@ -16,9 +17,9 @@ import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveStraightXSeconds
 public class AutonomousMoveForward extends CommandGroup {
     //robot moves back, then goes straight
     public AutonomousMoveForward() {
+        addSequential(new DisableInitPosition(1.0));
         addSequential(new DriveBackXSeconds(0.75));
         addSequential(new WaitCommand(1.0));
-        
         addSequential(new DriveStraightXSeconds(.75));
     }
 }

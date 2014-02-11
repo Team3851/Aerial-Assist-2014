@@ -3,7 +3,9 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.IO;
+import edu.wpi.first.wpilibj.templates.subsystems.Ballista;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.templates.subsystems.Pickup;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -16,6 +18,8 @@ public abstract class CommandBase extends Command {
     public static IO io;
     // Create a single static instance of all of your subsystems
     public static DriveTrain drivetrain = new DriveTrain();
+    public static Pickup pickup = new Pickup();
+    public static Ballista ballista = new Ballista();
 
     public static void init() {
         // This MUST be here. If the IO creates Commands (which it very likely

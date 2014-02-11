@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveWithJoysticks;
@@ -24,7 +25,8 @@ public class DriveTrain extends Subsystem {
         tank_Drive2 = new RobotDrive(RobotMap.leftFrontMotor, RobotMap.leftRearMotor,
                 RobotMap.rightFrontMotor, RobotMap.rightRearMotor);
         //tank_Drive1.setSafetyEnabled(true);
-        tank_Drive2.setSafetyEnabled(true);
+        tank_Drive2.setSafetyEnabled(false);
+        Watchdog.getInstance().kill();
     }
     
     

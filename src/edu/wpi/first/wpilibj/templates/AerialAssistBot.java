@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) FIRST 2008. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -14,7 +15,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.AutonomousMoveForward;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
+import edu.wpi.first.wpilibj.templates.commands.ballista.DisableInitPosition;
 import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveWithJoysticks;
+import edu.wpi.first.wpilibj.templates.commands.pickup.RunCompressor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +29,8 @@ import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveWithJoysticks;
 public class AerialAssistBot extends IterativeRobot {
 
     Command autonomousCommand;
+    Command runCompressor;
+    Command disableInitPosition;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,9 +39,14 @@ public class AerialAssistBot extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousMoveForward();
+        runCompressor = new RunCompressor();
+        disableInitPosition = new DisableInitPosition(2.0);
+        
 
         // Initialize all subsystems
         CommandBase.init();
+        runCompressor.start();
+        disableInitPosition.start();
     }
 
     public void autonomousInit() {
@@ -56,7 +66,7 @@ public class AerialAssistBot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        autonomousCommand.cancel();        
     }
 
     /**

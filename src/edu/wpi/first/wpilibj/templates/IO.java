@@ -4,6 +4,12 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.templates.commands.ballista.*;
+import edu.wpi.first.wpilibj.templates.commands.pickup.GrabBall;
+import edu.wpi.first.wpilibj.templates.commands.pickup.ReleaseBall;
+import edu.wpi.first.wpilibj.templates.commands.pickup.RunCompressor;
+import edu.wpi.first.wpilibj.templates.commands.pickup.StopCompressor;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,6 +50,38 @@ public class IO {
     
     Joystick leftJoy = new Joystick(1);
     Joystick rightJoy = new Joystick(2);
+            
+            //left joystick buttons
+    Button buttonL1 = new JoystickButton(leftJoy, 1),
+            buttonL2 = new JoystickButton(leftJoy, 2),
+            buttonL3 = new JoystickButton(leftJoy, 3),
+            buttonL4 = new JoystickButton(leftJoy, 4),
+            buttonL5 = new JoystickButton(leftJoy, 5),
+            buttonL6 = new JoystickButton(leftJoy, 6),
+            buttonL7 = new JoystickButton(leftJoy, 7),
+            buttonL8 = new JoystickButton(leftJoy, 8),
+            buttonL9 = new JoystickButton(leftJoy, 9),
+            buttonL10 = new JoystickButton(leftJoy, 10),
+            buttonL11 = new JoystickButton(leftJoy, 11);
+    
+    public IO() {
+        buttonL2.whileHeld(new GrabBall());
+        buttonL3.whenPressed(new PrepareShot());
+        buttonL1.whenPressed(new PinRelease(1.0));
+        
+        buttonL4.whenPressed(new EnableShootingPosition(1.0));
+        buttonL5.whenPressed(new EnablePickupPosition(1.0));
+        
+        buttonL11.whenPressed(new EnableInitPosition(4.0));
+    }
+    
+    public boolean getButtonL2() {
+        return buttonL2.get();
+    }
+    
+    public boolean getButtonL3() {
+        return buttonL3.get();
+    }
     
     public double getLeftY() {
         //set threshold value to 0.09
