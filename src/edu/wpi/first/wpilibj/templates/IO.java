@@ -76,7 +76,7 @@ public class IO {
         buttonP3.whenPressed(new EnableShootingPosition(1.0));
         buttonP1.whenPressed(new PinRelease(1.0));
         
-        buttonP6.whenPressed(new GrabBall());
+        buttonP6.whileHeld(new GrabBall());
         
         buttonL11.whenPressed(new EnableInitPosition(4.0));
         buttonL10.whenPressed(new DisableInitPosition(4.0));
