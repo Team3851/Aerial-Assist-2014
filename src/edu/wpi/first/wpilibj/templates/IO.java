@@ -73,6 +73,7 @@ public class IO {
         buttonL5.whenPressed(new EnablePickupPosition(1.0));
         
         buttonL11.whenPressed(new EnableInitPosition(4.0));
+        buttonL10.whenPressed(new DisableInitPosition(4.0));
     }
     
     public boolean getButtonL2() {

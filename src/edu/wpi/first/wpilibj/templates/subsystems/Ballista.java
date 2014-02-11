@@ -63,7 +63,7 @@ public class Ballista extends Subsystem {
     }
     
     public void disableInitPosition() {
-        ballista_init_pos.set(Relay.Value.kForward);
+        ballista_init_pos.set(Relay.Value.kReverse);
     }
     
     public void enableInitPosition() {
