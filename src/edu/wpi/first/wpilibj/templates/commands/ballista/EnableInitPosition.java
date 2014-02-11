@@ -20,7 +20,7 @@ public class EnableInitPosition extends CommandBase{
     }
 
     protected void execute() {
-        ballista.disableInitPosition();
+        ballista.enableInitPosition();
     }
 
     protected boolean isFinished() {

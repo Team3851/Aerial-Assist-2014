@@ -50,6 +50,7 @@ public class IO {
     
     Joystick leftJoy = new Joystick(1);
     Joystick rightJoy = new Joystick(2);
+    Joystick pickupJoy = new Joystick(3);
             
             //left joystick buttons
     Button buttonL1 = new JoystickButton(leftJoy, 1),
@@ -64,13 +65,18 @@ public class IO {
             buttonL10 = new JoystickButton(leftJoy, 10),
             buttonL11 = new JoystickButton(leftJoy, 11);
     
+    Button buttonP2 = new JoystickButton(pickupJoy, 2),
+            buttonP3 = new JoystickButton(pickupJoy, 3),
+            buttonP1 = new JoystickButton(pickupJoy, 1),
+            
+            buttonP6 = new JoystickButton(pickupJoy, 2),
+            buttonP5 = new JoystickButton(pickupJoy, 2);
     public IO() {
-        buttonL2.whileHeld(new GrabBall());
-        buttonL3.whenPressed(new PrepareShot());
-        buttonL1.whenPressed(new PinRelease(1.0));
+        buttonP2.whileHeld(new EnablePickupPosition(1.0));
+        buttonP3.whenPressed(new EnableShootingPosition(1.0));
+        buttonP1.whenPressed(new PinRelease(1.0));
         
-        buttonL4.whenPressed(new EnableShootingPosition(1.0));
-        buttonL5.whenPressed(new EnablePickupPosition(1.0));
+        buttonP6.whenPressed(new GrabBall());
         
         buttonL11.whenPressed(new EnableInitPosition(4.0));
         buttonL10.whenPressed(new DisableInitPosition(4.0));
