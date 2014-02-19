@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.wpi.first.wpilibj.templates.commands.drivetrain;
+package edu.wpi.first.wpilibj.templates.commands.ballista;
 
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 
@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
  *
  * @author 3851
  */
-public class DriveStraightXSeconds extends CommandBase{
-    public DriveStraightXSeconds (double timeout) {
-        requires(drivetrain);
+public class EnableTrussPosition extends CommandBase{
+    public EnableTrussPosition(double timeout) {
+        requires(ballista);
         setTimeout(timeout);
     }
 
@@ -20,9 +20,7 @@ public class DriveStraightXSeconds extends CommandBase{
     }
 
     protected void execute() {
-        //drive forward until timeout is called
-        //at 25% speed
-        drivetrain.basicDrive((-1)*.50, (-1)*.50);
+        ballista.enableTrussPosition();
     }
 
     protected boolean isFinished() {
@@ -34,4 +32,5 @@ public class DriveStraightXSeconds extends CommandBase{
 
     protected void interrupted() {
     }
+    
 }

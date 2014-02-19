@@ -10,23 +10,20 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
  *
  * @author 3851
  */
-public class DriveStraightXSeconds extends CommandBase{
-    public DriveStraightXSeconds (double timeout) {
+public class DrivetrainDoNothing extends CommandBase{
+    public DrivetrainDoNothing() {
         requires(drivetrain);
-        setTimeout(timeout);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        //drive forward until timeout is called
-        //at 25% speed
-        drivetrain.basicDrive((-1)*.50, (-1)*.50);
+        drivetrain.basicDrive(0.0, 0.0);
     }
 
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     protected void end() {
@@ -34,4 +31,5 @@ public class DriveStraightXSeconds extends CommandBase{
 
     protected void interrupted() {
     }
+    
 }

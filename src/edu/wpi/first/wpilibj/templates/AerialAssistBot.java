@@ -46,11 +46,11 @@ public class AerialAssistBot extends IterativeRobot {
         // Initialize all subsystems
         CommandBase.init();
         runCompressor.start();
-        disableInitPosition.start();
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+        disableInitPosition.start();
         autonomousCommand.start();
     }
 

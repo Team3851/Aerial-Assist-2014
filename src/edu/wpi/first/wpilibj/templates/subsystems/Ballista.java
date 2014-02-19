@@ -62,6 +62,11 @@ public class Ballista extends Subsystem {
         pin_hold_release.set(Relay.Value.kReverse);
     }
     
+    public void enableTrussPosition() {
+        ballista_init_pos.set(Relay.Value.kReverse);
+        ballista_shooting_pos.set(Relay.Value.kReverse);
+    }   
+    
     public void disableInitPosition() {
         ballista_init_pos.set(Relay.Value.kReverse);
     }
@@ -73,10 +78,12 @@ public class Ballista extends Subsystem {
     
     public void enableShootingPosition() {
         ballista_shooting_pos.set(Relay.Value.kForward);
+        ballista_init_pos.set(Relay.Value.kReverse);
     }
     
     public void enablePickupPosition() {
         ballista_shooting_pos.set(Relay.Value.kReverse);
+        ballista_init_pos.set(Relay.Value.kReverse);
     }
     
     public void doNothing() {

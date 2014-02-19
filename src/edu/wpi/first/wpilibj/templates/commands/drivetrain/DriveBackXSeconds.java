@@ -22,7 +22,7 @@ public class DriveBackXSeconds extends CommandBase{
     protected void execute() {
         //drive back until timeout is called
         //at 25% speed
-        drivetrain.basicDrive((-1)*.25, (-1)*.25);
+        drivetrain.basicDrive(.25, .25);
     }
 
     protected boolean isFinished() {

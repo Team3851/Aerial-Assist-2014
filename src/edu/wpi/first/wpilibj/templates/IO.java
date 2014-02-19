@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.commands.ballista.*;
 import edu.wpi.first.wpilibj.templates.commands.pickup.GrabBall;
 import edu.wpi.first.wpilibj.templates.commands.pickup.ReleaseBall;
@@ -51,6 +52,8 @@ public class IO {
     Joystick leftJoy = new Joystick(1);
     Joystick rightJoy = new Joystick(2);
     Joystick pickupJoy = new Joystick(3);
+    PrepareShot prepareShot = new PrepareShot();
+    Command prepareShotCommand = new PrepareShot();
             
             //left joystick buttons
     Button buttonL1 = new JoystickButton(leftJoy, 1),
@@ -67,22 +70,36 @@ public class IO {
     
     Button buttonP2 = new JoystickButton(pickupJoy, 2),
             buttonP3 = new JoystickButton(pickupJoy, 3),
-            buttonP1 = new JoystickButton(pickupJoy, 1),
-            
+            buttonP1 = new JoystickButton(pickupJoy, 1),          
             buttonP6 = new JoystickButton(pickupJoy, 6),
-            buttonP4 = new JoystickButton(pickupJoy, 4);
+            buttonP4 = new JoystickButton(pickupJoy, 4),
+            buttonP9 = new JoystickButton(pickupJoy, 9),
+            buttonP8 = new JoystickButton(pickupJoy, 8);
+    
     public IO() {
+        //BALLISTA CONTROLS
+        /*
+         * Position
+         */
         buttonP2.whileHeld(new EnablePickupPosition(1.0));
         buttonP3.whenPressed(new EnableShootingPosition(1.0));
-        buttonP1.whenPressed(new PinRelease(1.0));
+        buttonP9.whenPressed(new EnableTrussPosition(1.0));
+        buttonP8.whenPressed(new DisableInitPosition(1.0));
         
-        
+        /*
+         * Shooting
+         */
         buttonP4.whenPressed(new PrepareShot());
+        buttonP1.whenPressed(new BallistaFireBall());
         buttonP6.whileHeld(new GrabBall());
         
-        buttonL11.whenPressed(new EnableInitPosition(4.0));
-        buttonL10.whenPressed(new DisableInitPosition(4.0));
-        buttonL6.whenPressed(new Release(2.0));
+        
+        //DEBUG ON LEFT JOYSTICK
+        buttonL7.whenPressed(new PinHold(1.0));
+        buttonL6.whenPressed(new PinRelease(1.0));
+        
+        buttonL10.whenPressed(new PrepareShotNoPinRelease());
+        buttonL11.whenPressed(new Release(2.0));
     }
     
     public boolean getButtonL2() {
