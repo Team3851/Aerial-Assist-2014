@@ -10,23 +10,20 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
  *
  * @author 3851
  */
-public class HoldBall extends CommandBase{    
-    public HoldBall(double timeout) {
+public class PickupDoNothing extends CommandBase{
+    public PickupDoNothing() {
         requires(pickup);
-        setTimeout(timeout);
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        pickup.holdBall();
-        System.out.println("Holding Ball");
+        pickup.doNothing();
     }
 
     protected boolean isFinished() {
-        //pickup.isBallHeld = true;
-        return isTimedOut();
+        return false;
     }
 
     protected void end() {

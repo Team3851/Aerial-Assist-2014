@@ -27,8 +27,7 @@ public class Ballista extends Subsystem {
     Relay pin_hold_release;
     
     Relay ballista_init_pos;
-    Relay ballista_shooting_pos;
-    
+    Relay ballista_shooting_pos;  
 
     // Initialize your subsystem here
     public Ballista() {

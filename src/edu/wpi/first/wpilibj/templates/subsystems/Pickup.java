@@ -1,14 +1,9 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.pickup.HoldBall;
-import edu.wpi.first.wpilibj.templates.commands.drivetrain.DriveWithJoysticks;
-import edu.wpi.first.wpilibj.templates.commands.pickup.GrabBall;
+import edu.wpi.first.wpilibj.templates.commands.pickup.PickupDoNothing;
 
 /**
  * Drivetrain subsystem, using polar mecanum drive as of now seeing as how gyro is 
@@ -21,12 +16,18 @@ import edu.wpi.first.wpilibj.templates.commands.pickup.GrabBall;
 public class Pickup extends Subsystem { 
     Relay pickup_mot1;
     Relay pickup_mot2;
+    Relay pickup_holdball_piston;
+    
     Relay air_compressor;
+    
+    public boolean isBallHeld;
 
     // Initialize your subsystem here
     public Pickup() {
         pickup_mot1 = new Relay(RobotMap.pickupMotor1);
         pickup_mot2 = new Relay(RobotMap.pickupMotor2);
+        pickup_holdball_piston = new Relay(RobotMap.pickup_holdball);
+        
         air_compressor = new Relay(RobotMap.airCompressor);
     }
     
@@ -35,7 +36,7 @@ public class Pickup extends Subsystem {
      * Set the default command to drive with joysticks.
      */
     public void initDefaultCommand() {
-        setDefaultCommand(new HoldBall());
+        setDefaultCommand(new PickupDoNothing());
     }
 
     //standard tank drive 
@@ -44,8 +45,6 @@ public class Pickup extends Subsystem {
         //motor is actually in reverse
         pickup_mot2.set(Relay.Value.kReverse);
         pickup_mot1.set(Relay.Value.kForward);
-        
-        
     }
     
     public void releaseBall() {
@@ -55,9 +54,18 @@ public class Pickup extends Subsystem {
         pickup_mot2.set(Relay.Value.kReverse);
     }
     
+    public void holdBall() {
+        pickup_holdball_piston.set(Relay.Value.kForward);
+    }
+    
+    public void stopHoldBall() {
+        pickup_holdball_piston.set(Relay.Value.kReverse);
+    }
+    
     public void doNothing() {
         pickup_mot1.set(Relay.Value.kOff);
         pickup_mot2.set(Relay.Value.kOff);
+        pickup_holdball_piston.set(Relay.Value.kOff);
     }
     
     public void runCompressor() {

@@ -28,7 +28,8 @@ public class RobotMap {
             drawback_release_relay = 7,
             pin_push_pull_relay = 6,
             ballista_init_pos = 5,
-            ballista_shooting_pos = 4;
+            ballista_shooting_pos = 4,
+            pickup_holdball = 8;
     
     
     // If you are using multiple modules, make sure to define both the port

@@ -7,10 +7,7 @@ import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.templates.commands.ballista.*;
-import edu.wpi.first.wpilibj.templates.commands.pickup.GrabBall;
-import edu.wpi.first.wpilibj.templates.commands.pickup.ReleaseBall;
-import edu.wpi.first.wpilibj.templates.commands.pickup.RunCompressor;
-import edu.wpi.first.wpilibj.templates.commands.pickup.StopCompressor;
+import edu.wpi.first.wpilibj.templates.commands.pickup.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -70,18 +67,21 @@ public class IO {
     
     Button buttonP2 = new JoystickButton(pickupJoy, 2),
             buttonP3 = new JoystickButton(pickupJoy, 3),
-            buttonP1 = new JoystickButton(pickupJoy, 1),          
+            buttonP1 = new JoystickButton(pickupJoy, 1), 
+            buttonP7 = new JoystickButton(pickupJoy, 7),
             buttonP6 = new JoystickButton(pickupJoy, 6),
             buttonP4 = new JoystickButton(pickupJoy, 4),
             buttonP9 = new JoystickButton(pickupJoy, 9),
-            buttonP8 = new JoystickButton(pickupJoy, 8);
+            buttonP8 = new JoystickButton(pickupJoy, 8),
+            buttonP11 = new JoystickButton(pickupJoy, 11),
+            buttonP10 = new JoystickButton(pickupJoy, 10);
     
     public IO() {
         //BALLISTA CONTROLS
         /*
          * Position
          */
-        buttonP2.whileHeld(new EnablePickupPosition(1.0));
+        buttonP2.whenPressed(new EnablePickupPosition(1.0));
         buttonP3.whenPressed(new EnableShootingPosition(1.0));
         buttonP9.whenPressed(new EnableTrussPosition(1.0));
         buttonP8.whenPressed(new DisableInitPosition(1.0));
@@ -89,9 +89,16 @@ public class IO {
         /*
          * Shooting
          */
-        buttonP4.whenPressed(new PrepareShot());
+        buttonP11.whenPressed(new PrepareShot());
+        buttonP10.whenPressed(new EnableInitPosition(1.0));
         buttonP1.whenPressed(new BallistaFireBall());
+        
+        
+        /*
+         * Pickup
+         */
         buttonP6.whileHeld(new GrabBall());
+        buttonP7.whenPressed(new HoldBall(1.0));
         
         
         //DEBUG ON LEFT JOYSTICK
