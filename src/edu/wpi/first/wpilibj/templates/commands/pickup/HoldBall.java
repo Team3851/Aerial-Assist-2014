@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.templates.commands.CommandBase;
  */
 public class HoldBall extends CommandBase{    
     public HoldBall(double timeout) {
-        requires(pickup);
         setTimeout(timeout);
     }
 
