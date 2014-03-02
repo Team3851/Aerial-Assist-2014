@@ -40,12 +40,12 @@ public class AerialAssistBot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousMoveForward();
         runCompressor = new RunCompressor();
-        disableInitPosition = new DisableInitPosition(2.0);
-        
+        disableInitPosition = new DisableInitPosition(2.0);       
 
-        // Initialize all subsystems
+        // Initialize all subsystems/test
         CommandBase.init();
         runCompressor.start();
+        LiveWindow.setEnabled(true);        
     }
 
     public void autonomousInit() {

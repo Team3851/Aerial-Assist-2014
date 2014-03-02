@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.templates.commands.ballista.*;
 import edu.wpi.first.wpilibj.templates.commands.pickup.*;
 
@@ -123,6 +124,7 @@ public class IO {
             return 0;
         }
         else {
+            SmartDashboard.putNumber("SPEED LEFT TRAIN", (-1)*leftJoy.getY());
             return (-1)*leftJoy.getY();
         }
     }
@@ -135,6 +137,7 @@ public class IO {
         if (Math.abs(rightJoy.getY()) <= 0.09) {
             return 0;
         }
+        SmartDashboard.putNumber("SPEED RIGHT TRAIN", (-1)*rightJoy.getY());
         return (-1)*rightJoy.getY();
     }
     

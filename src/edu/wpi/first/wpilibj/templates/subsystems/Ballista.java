@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.ballista.BallistaDoNothing;
 import edu.wpi.first.wpilibj.templates.commands.pickup.HoldBall;
@@ -36,6 +37,13 @@ public class Ballista extends Subsystem {
         
         ballista_shooting_pos = new Relay(RobotMap.ballista_shooting_pos);
         ballista_init_pos = new Relay(RobotMap.ballista_init_pos);
+        
+        
+        LiveWindow.addActuator("Ballista", "Initial Position", ballista_init_pos);
+        LiveWindow.addActuator("Ballista", "Shooting Position", ballista_shooting_pos);
+        LiveWindow.addActuator("Ballista", "Drawback/Release", drawback_release);
+        LiveWindow.addActuator("Ballista", "Pin Hold/Release", pin_hold_release);
+        
     }
 
     public void initDefaultCommand() {

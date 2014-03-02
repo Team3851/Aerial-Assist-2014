@@ -2,8 +2,10 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.pickup.PickupDoNothing;
+import edu.wpi.first.wpilibj.templates.subsystems.Ballista;
 
 /**
  * Drivetrain subsystem, using polar mecanum drive as of now seeing as how gyro is 
@@ -19,7 +21,7 @@ public class Pickup extends Subsystem {
     Relay pickup_holdball_piston;
     
     Relay air_compressor;
-    
+            
     public boolean isBallHeld;
 
     // Initialize your subsystem here
@@ -29,6 +31,11 @@ public class Pickup extends Subsystem {
         pickup_holdball_piston = new Relay(RobotMap.pickup_holdball);
         
         air_compressor = new Relay(RobotMap.airCompressor);
+        
+        LiveWindow.addActuator("Pickup", "HoldBall Relay", pickup_holdball_piston);
+        LiveWindow.addActuator("Pickup", "Pickup Motor 1 Relay", pickup_mot1);
+        LiveWindow.addActuator("Pickup", "Pickup Motor 2 Relay", pickup_mot2);
+
     }
     
     
